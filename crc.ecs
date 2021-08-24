@@ -1,0 +1,67 @@
+PROJECT_ROOT("~ecs")
+PROJECT_NAME("crc")
+ENVIRONMENT_PATH({
+  "/usr/sbin",
+  "/usr/bin",
+  "/sbin",
+  "/bin"
+})
+TOOLCHAIN_C({
+  "gcc"
+})
+TOOLCHAIN_CXX({
+  "g++"
+})
+TOOLCHAIN_AS({
+  "as"
+})
+TOOLCHAIN_LIB({
+  "ar"
+})
+TOOLCHAIN_LINK({
+  "ld"
+})
+TOOLCHAIN_FILEMANIP({})
+SERVICES("default", {
+  "MC3R1",
+  "MET.HIS"
+})
+FILES("default", {})
+TASKS_CLEAN("CRC_32", {
+  cwd="~top",
+  command="~top/clean.sh",
+  args={
+    "crc"
+  }
+})
+TASKS_BUILD("CRC_32", {
+  cwd="~top",
+  command="~top/build.sh",
+  args={
+    "crc"
+  }
+})
+SETTINGS_ANALYSIS("check_rules", {
+  args={},
+  ecls={
+    "~top/ECLAIR/analysis_check_rules.ecl"
+  }
+})
+SETTINGS_REPORT("build_reports", {
+  args={},
+  ecls={
+    "~top/ECLAIR/report_build_reports.ecl"
+  }
+})
+CONFIGURATIONS("CRC_32", {
+  services={
+    "enable:default"
+  },
+  files={
+    "reports:default"
+  },
+  clean="CRC_32",
+  build="CRC_32",
+  analysis="check_rules",
+  report="build_reports"
+})

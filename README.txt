@@ -7,7 +7,6 @@ ECLAIR 3.11 crc Linux GCC Eclipse CDT Demo
 
 
 
-
 This package provides a small demonstration of some ECLAIR capabilities, both
 when used from its GUI and when used in batch mode.
 
